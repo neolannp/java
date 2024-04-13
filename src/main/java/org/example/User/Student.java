@@ -61,4 +61,8 @@ public class Student extends User{
     public String getPatronymic() {
         return patronymic;
     }
+    @Override
+    public String getFullName(){
+        return surname+" "+name;
+    }
 }

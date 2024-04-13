@@ -81,4 +81,8 @@ public class Professor extends User{
     public String getType() {
         return type;
     }
+    @Override
+    public String getFullName(){
+        return surname+" "+name+" "+patronymic;
+    }
 }

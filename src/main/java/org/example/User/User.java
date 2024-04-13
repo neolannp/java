@@ -16,6 +16,7 @@ public abstract class User {
     private ArrayList<String> womenNameList = new ArrayList<>();
     private ReadExcel wb = new ReadExcel();
     Random random=new Random();
+    private String fullName;
 
     public User() throws IOException {
         this.sex=random.nextBoolean();
@@ -56,5 +57,8 @@ public abstract class User {
     }
     public String getType() {
         return type;
+    }
+    public String getFullName(){
+        return fullName;
     }
 }
