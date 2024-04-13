@@ -26,25 +26,23 @@ public class Tree {
     public JTree getTree(){
         return tree;
     }
-    public void fillUser(ArrayList<Library> libraries){
-        DefaultMutableTreeNode users;
-        for (int i=0; i<libraries.size() ; i++){
-            User currentUser=libraries.get(i).getUser();
-            ArrayList<Book> currentBookList=libraries.get(i).getBooksOnHandsList();
-            if(currentUser.getType().equals("преподаватель")){
-                users=new DefaultMutableTreeNode(currentUser.getFullName());
-                for (int k=0;k<currentBookList.size();k++){
-                    users.add(new DefaultMutableTreeNode(currentBookList.get(k).getName()));
-                }
-                professorNode.add(users);
+    public void fillUser(ArrayList<Library> libraries) {
+        for (Library library : libraries) {
+            User currentUser = library.getUser();
+            ArrayList<Book> currentBookList = library.getBooksOnHandsList();
 
-            }else {
-                users=new DefaultMutableTreeNode(currentUser.getFullName());
-                for (int k=0;k<currentBookList.size();k++){
-                    users.add(new DefaultMutableTreeNode(currentBookList.get(k).getName()));
-                }
-                studentNode.add(users);
+            DefaultMutableTreeNode userNode = new DefaultMutableTreeNode(currentUser.getFullName());
+
+            for (Book book : currentBookList) {
+                userNode.add(new DefaultMutableTreeNode(book.getName()));
+            }
+
+            if (currentUser.getType().equals("преподаватель")) {
+                professorNode.add(userNode);
+            } else {
+                studentNode.add(userNode);
             }
         }
     }
+
 }
